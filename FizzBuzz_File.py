@@ -1,24 +1,18 @@
 import numpy as np
 
 def FizzBuzz(start, finish):
-    numbers = np.arange(start, finish)  
+    numbers = np.arange(start, finish + 1)  
     result = np.full(numbers.shape, '', dtype=object) 
     
+    result[numbers % 15 == 0] = 'fizzbuzz'  
     result[numbers % 3 == 0] = 'fizz'
     result[numbers % 5 == 0] = 'buzz'
-    result[numbers % 15 == 0] = 'fizzBuzz'
 
     mask = result == ''
-    result[mask] = numbers[mask].astype(str)
+    result[mask] = numbers[mask]  
 
-    return result
+    return result.tolist()  
 
-start = 91
-finish = 106  
-print("\n".join(FizzBuzz(start, finish)))
-
-myEmptyList = []
-for i in range(91, 105):
-    myEmptyList.append(i)
-    
-print(myEmptyList)  
+start = 40
+finish = 45
+print(FizzBuzz(start, finish))  
